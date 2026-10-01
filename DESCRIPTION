@@ -1,7 +1,7 @@
 Package: pagerankr
 Type: Package
 Title: Modular Toolkit for PageRank Calculation
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: person("Bart", "Turczynski", email = "bartek@turczynski.pl", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8788-7980"))
 Description: Provides a set of modular, pipeable functions to calculate PageRank scores from edge lists and redirect reports, common in SEO analysis. Functions handle URL cleaning, redirect resolution, edge deduplication, isolate handling, and PageRank computation using base R for data manipulation and 'igraph' for core PageRank calculation.
@@ -16,14 +16,16 @@ Suggests: testthat (>= 3.0.0), withr, knitr, rmarkdown, pkgdown, covr,
 Config/Needs/build: local
 Config/testthat/edition: 3
 VignetteBuilder: knitr
-URL: https://pagerankr-63ad30.gitlab.io/,
-        https://gitlab.com/bart-turczynski/pagerankr
+URL: https://bart-turczynski.gitlab.io/pagerankr/,
+        https://gitlab.com/bart-turczynski/pagerankr,
+        https://bart-turczynski.r-universe.dev/pagerankr,
+        https://CRAN.R-project.org/package=pagerankr
 BugReports: https://gitlab.com/bart-turczynski/pagerankr/-/issues
 Config/roxygen2/version: 8.0.0
 NeedsCompilation: no
-Packaged: 2026-09-17 16:26:29 UTC; bartturczynski
+Packaged: 2026-09-30 11:45:35 UTC; bartturczynski
 Author: Bart Turczynski [aut, cre] (ORCID:
     <https://orcid.org/0000-0002-8788-7980>)
 Maintainer: Bart Turczynski <bartek@turczynski.pl>
 Repository: CRAN
-Date/Publication: 2026-09-28 08:50:02 UTC
+Date/Publication: 2026-10-01 16:30:02 UTC

@@ -12,7 +12,7 @@
 
 <meta name="author" content="Bart Turczynski" />
 
-<meta name="date" content="2026-09-17" />
+<meta name="date" content="2026-09-30" />
 
 <title>Using the pagerankr Package</title>
 
@@ -341,7 +341,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Using the pagerankr Package</h1>
 <h4 class="author">Bart Turczynski</h4>
-<h4 class="date">2026-09-17</h4>
+<h4 class="date">2026-09-30</h4>
 
 
 <div id="TOC">
@@ -923,7 +923,7 @@ informative model:</p>
 <span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="fu">auto_grid</span>(<span class="at">damping =</span> <span class="fu">c</span>(<span class="fl">0.75</span>, <span class="fl">0.85</span>, <span class="fl">0.95</span>))</span>
 <span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">pagerank_grid</span>(edges, <span class="at">params_grid =</span> grid, <span class="at">clean_edge_urls =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a><span class="co"># Analyse distribution metrics across the grid</span></span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a><span class="co"># Analyze distribution metrics across the grid</span></span>
 <span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a>analysis <span class="ot">&lt;-</span> <span class="fu">analyze_pagerank_grid</span>(results)</span>
 <span id="cb19-11"><a href="#cb19-11" tabindex="-1"></a><span class="fu">print</span>(analysis)</span>
 <span id="cb19-12"><a href="#cb19-12" tabindex="-1"></a><span class="co">#&gt;       model_id num_nodes pr_sum    pr_max   pr_gini pr_entropy pr_top10_share</span></span>

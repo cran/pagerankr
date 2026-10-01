@@ -1,4 +1,62 @@
+# pagerankr 0.1.1
+
+* The test suite passes against rurl 3.1.0 as well as 3.0.1. rurl 3.1.0 adds
+  `path_normalisation`, a British-spelling alias of `path_normalization`, to
+  `rurl::get_clean_url()`, and the canonicalization surface guard in
+  `test-canonicalization.R` failed on it by design. The guard now lists the
+  alias as an optional argument: it counts as accounted for when the installed rurl has
+  it and is never reported as removed when it does not. It cannot move the node
+  key, because `canonical_profile()` pins `path_normalization` and rurl rejects
+  both spellings together (`PAGE-lgsbjjuf`).
+
+* `analyse_pagerank_grid()` and `sf_normalise_position()` are now exported as
+  British-spelling aliases of `analyze_pagerank_grid()` and
+  `sf_normalize_position()`. Each alias is the same function as its US-spelled
+  primary and is documented on the primary's help page; the US spellings stay
+  the canonical names (`SEOR-qwomlgjd`).
+
+* Documentation prose is now US English throughout, matching `DESCRIPTION`'s
+  `Language: en-US`: the help pages for `smooth_transitions()` and
+  `transform_weights()` and the `README` function table no longer use British
+  spellings, and `inst/WORDLIST` no longer accepts them. The message
+  `compute_pagerank()` prints when `eps` or `niter` switches the solver to
+  ARPACK now reads "honored" (`SEOR-kfiqpymb`).
+
+* The documentation site's address is now the GitLab Pages namespace path
+  <https://bart-turczynski.gitlab.io/pagerankr/>, the fleet-wide standard,
+  instead of the project's unique Pages domain, which stops resolving once it
+  is turned off. `DESCRIPTION`, `_pkgdown.yml`, `CITATION.cff`, `.zenodo.json`,
+  `codemeta.json`, `SECURITY-INSIGHTS.yml`, `.bestpractices.json` and the
+  `README` badge all carry the new address. The CRAN page for 0.1.0 keeps the
+  old address until the next release (`SEOR-vujgdjfv`).
+
+* pagerankr is on CRAN. `DESCRIPTION`'s `URL:` now lists the CRAN page,
+  <https://CRAN.R-project.org/package=pagerankr>, as do `CITATION.cff` and
+  `codemeta.json`, and the `README` leads its installation instructions with
+  `install.packages("pagerankr")` (`PAGE-gwgjmtmw`).
+
 # pagerankr 0.1.0
+
+* **`BugReports:` stays on `/-/issues`; every human-facing tracker link now
+  points at `/-/work_items`.** CRAN runs two checks over a GitLab
+  `BugReports:` URL and they contradict each other: `tools::check_url_db()`
+  fetches the address and 404s on `/-/issues`, which GitLab replaced with a
+  new work-items page, while `tools:::.check_package_CRAN_incoming()` never
+  fetches anything and flags any path that is not a string match for
+  `/-/issues` with a NOTE. Declaring `/-/work_items` in `DESCRIPTION` is not
+  a style choice: it got the first pslr 1.2.1 upload archived at the CRAN
+  pretest on 2026-09-12. So `DESCRIPTION` (and the roxygen2-generated
+  `pagerankr-package` help topic, which mirrors it) keep `/-/issues`;
+  `codemeta.json`, `SECURITY.md`, and `README` -- files a human actually
+  clicks -- now point at `/-/work_items`, the address GitLab serves
+  (`SEOR-ocbtrrnl`).
+
+* **The GitHub Actions workflows are gone, and `codemeta.json` names GitLab.**
+  `.gitlab-ci.yml` has replaced all eight workflows since the move to GitLab, so
+  `.github/workflows/` and `.github/dependabot.yml` were dead weight that the new
+  read-only GitHub mirror would have republished. `codemeta.json` now points at
+  `gitlab.com` for every URL it carries -- repository, issue tracker, release
+  notes and CI -- matching what `DESCRIPTION` has said since `PAGE-mehcgwzv` (`PAGE-yfmrrrhp`).
 
 * **`BugReports:` points at `/-/issues`, the form the CRAN incoming
   check requires.** The incoming check on `R-devel` notes any `gitlab.com` `BugReports:`
@@ -181,7 +239,7 @@
   robots_blocked / response_dead) is a page's health/index state; `node_status`
   (normal / new-target / removed-dead) is a node's role in a before/after
   comparison. They are kept separate on purpose: `new-target` has no health
-  analogue, and `removed-dead` is the single value bridging both axes (a node
+  analog, and `removed-dead` is the single value bridging both axes (a node
   removed *because* its proposed health state is a forced 404). The two `@return`
   sections now cross-reference each other.
 
@@ -738,6 +796,77 @@
 * Initial CI and lint baseline.
 
 ## Internal
+
+* The agent instructions no longer import `FP_AGENTS.md`, the file the `fp`
+  tracker generates, which is deleted. `AGENTS.md` points at the house
+  `agent-workflow` and `fp` skills for the git workflow (`SEOR-ipwcbcov`).
+
+* **The two dependency audits run on a dedicated schedule, and the OSS Index
+  one now runs at all.** `osv-audit` fired on every pipeline schedule, on
+  `main` pushes that touched `DESCRIPTION` or its test, and as a manual job on
+  every pipeline; it now fires only on a schedule that sets
+  `SCHEDULE_KIND=dependency-audit`, or by hand. A new `security-audit` job runs
+  `test-security.R` under the same rules with `OSSINDEX_AUDIT_REQUIRED=true`,
+  so missing OSS Index credentials fail the job instead of letting it pass
+  having audited nothing (`SEOR-fftbjnpl`).
+
+* **`SECURITY-INSIGHTS.yml` describes the project as it is hosted now.** It
+  still cited GitHub issues, releases, Actions workflows that no longer exist,
+  Codecov, a `github.io` site and GitHub private vulnerability reporting. It now
+  cites the GitLab repository and tracker, `.gitlab-ci.yml`, the `gitlab.io`
+  site and the channels `SECURITY.md` names (`SEOR-wmtfrsjq`).
+
+* **`.bestpractices.json` now names GitLab and describes today's CI, and
+  `scripts/bestpractices-url.py`, copied from the `seor` repository, pushes
+  it.** The OpenSSF self-assessment still cited GitHub Issues, GitHub private
+  vulnerability reporting, the deleted `.github/workflows/` files, Codecov and
+  the `github.io` site. Every justification now points at the GitLab repository,
+  work items, pipelines and the pkgdown site `DESCRIPTION` declares, and names
+  GitHub only as the read-only mirror. Four answers moved to what the repository
+  actually does: `static_analysis_common_vulnerabilities`, `dynamic_analysis`
+  and `tests_documented_added` are Unmet, and `dynamic_analysis_fixed` is N/A.
+  The OpenSSF Best Practices site does not import the file from a GitLab
+  repository, so the script turns it into edit links the owner opens and saves,
+  and `--check` compares the live entry with the file. A pre-push hook runs its
+  offline self-test when the script changes (`SEOR-grrcptww`).
+
+* **The OSS Index audit judges each advisory by disposition, not by "the scan
+  is empty".** `tests/testthat/test-security.R` now reads an allow-list in the
+  new `tests/testthat/helper-security.R`: a reported advisory not on the list
+  fails, a listed advisory no longer reported fails, and a row past its review
+  date or version warns. The list is empty because the 24-package hard
+  dependency closure reports zero advisories. A validator checks every row
+  against fixtures, an audit that resolves no packages fails, and under
+  `OSSINDEX_AUDIT_REQUIRED=true` a missing `oysteR` or missing credentials is a
+  failure rather than a skip, so a future credentialed audit job cannot go
+  green having audited nothing (`SEOR-fftbjnpl`).
+
+* **The pre-push verify gate fails when a checker is missing, instead of
+  skipping the check and exiting 0.** Four checks -- citation, the
+  `BugReports:` split, spelling and `R CMD check` -- were guarded by "is the
+  tool installed?" tests that printed a warning line on a miss and let the gate
+  pass. On a feature
+  branch this hook is the only gate that runs anywhere, so its most degraded
+  form still reported success. A missing checker is now a failed gate. The
+  opt-in bypasses (`SKIP_VERIFY`, `SKIP_RCMDCHECK`, `SKIP_SPELLING`) are
+  unchanged and report as `SKIP (opt-in)` rather than as passes. The gate also
+  runs every check before reporting and ends with a verdict list naming each
+  one, so "the gate passed" is a claim about a named set (`SEOR-dzrisdmi`).
+
+* **`scripts/check-bugreports.py` now runs in CI.** It had zero references in
+  `.gitlab-ci.yml`, so the newest gate in the fleet ran on a correctly
+  provisioned laptop and nowhere else. It joins the existing `citation-version`
+  job, which already runs on a python image (`SEOR-dzrisdmi`).
+
+* `scripts/gates.R` takes optional gate names and a `--no-summary` flag, so the
+  pre-push hook runs the same `news-version` and `codemeta` implementations CI
+  runs instead of a second copy of the rules in bash (`SEOR-dzrisdmi`).
+
+* `DESCRIPTION`'s `URL:` now lists the package's r-universe page. r-universe
+  records this repository's upstream owner as `gitlab-bart-turczynski` because
+  it is hosted on GitLab, which does not match the `bart-turczynski` universe,
+  so the package was built and served but hidden from r-universe search. The
+  URL claims it (`SEOR-zfamoutf`).
 
 * The OSS Index dependency audit in `tests/testthat/test-security.R` scopes to
   hard dependencies (`Depends` + `Imports`) instead of the `Suggests` tree.

@@ -24,13 +24,17 @@ pagerankr: SEO-Focused PageRank Modeling Toolkit
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/pagerankr)](https://CRAN.R-project.org/package=pagerankr)
+[![CRAN
+downloads](https://cranlogs.r-pkg.org/badges/pagerankr)](https://CRAN.R-project.org/package=pagerankr)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![OpenSSF Best
 Practices](https://www.bestpractices.dev/projects/13553/badge)](https://www.bestpractices.dev/projects/13553)
 [![Pipeline
 status](https://gitlab.com/bart-turczynski/pagerankr/badges/main/pipeline.svg)](https://gitlab.com/bart-turczynski/pagerankr/-/pipelines)
-[![Documentation](https://img.shields.io/badge/docs-pkgdown-blue.svg)](https://pagerankr-63ad30.gitlab.io/)
+[![Documentation](https://img.shields.io/badge/docs-pkgdown-blue.svg)](https://bart-turczynski.gitlab.io/pagerankr/)
 [![Coverage](https://gitlab.com/bart-turczynski/pagerankr/badges/main/coverage.svg)](https://gitlab.com/bart-turczynski/pagerankr/-/pipelines)
 <!-- badges: end -->
 
@@ -61,6 +65,10 @@ The package currently includes:
 ## 1.1 Installation
 
 ``` r
+# From CRAN
+install.packages("pagerankr")
+
+# Development version from GitLab
 # install.packages("devtools")
 devtools::install_gitlab("bart-turczynski/pagerankr")
 ```
@@ -239,7 +247,7 @@ export_graph(pr, edges, file = "pagerank.graphml", format = "graphml")
 | `simulate_changes()` | Evaluate proposed link/redirect changes |
 | `auto_grid()` | Build exhaustive parameter grids |
 | `pagerank_grid()` | Run PageRank across multiple parameter sets |
-| `analyze_pagerank_grid()` | Summarise PageRank distribution by model |
+| `analyze_pagerank_grid()` | Summarize PageRank distribution by model |
 | `pr_gini()` | Gini concentration metric |
 | `pr_entropy()` | Entropy dispersion metric |
 | `pr_top_k_share()` | Top-k PageRank concentration share |
@@ -276,8 +284,8 @@ The reference and vignettes ship with the package and are reachable
 through `help(package = "pagerankr")` and the `vignette()` calls below;
 the rendered website is being rebuilt after the move to GitLab. To
 report a bug or request an enhancement, use [GitLab
-Issues](https://gitlab.com/bart-turczynski/pagerankr/-/issues). Please
-read
+Issues](https://gitlab.com/bart-turczynski/pagerankr/-/work_items).
+Please read
 [CONTRIBUTING.md](https://gitlab.com/bart-turczynski/pagerankr/-/blob/main/CONTRIBUTING.md)
 before proposing a change; it sets out the test, lint, and R CMD check
 requirements. For privately reported security vulnerabilities, follow
